@@ -16,12 +16,11 @@ class BaseUserViewController: UIViewController, TimeLineProtocol {
 
     let inputFormatter = NSDateFormatter()
     let exportFormatter = NSDateFormatter()
-    
     var toGetUserInfoId = ""
-    
     var userInfoArray: [String:AnyObject] = [:]
     var userStatus: UserInfo?
     var httpMessage = ""
+    var protectedMark = ""
     let mainQueue = dispatch_get_main_queue()
     let imageQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
 
@@ -120,6 +119,9 @@ class BaseUserViewController: UIViewController, TimeLineProtocol {
         guard let joinedDate = result["created_at"] as? String else {
             fatalError("Parse Error!")
         }
+        guard let protected = result["protected"] as? Bool else {
+            fatalError("Parse Error!")
+        }
         guard let profileImageUrlHttps = result["profile_image_url_https"] as? String else {
             fatalError("Parse error!") }
         return UserInfo(
@@ -131,7 +133,8 @@ class BaseUserViewController: UIViewController, TimeLineProtocol {
             favorites: favoriteCount,
             totalTweet: totalTweet,
             joinedDate: exportFormatter.stringFromDate(inputFormatter.dateFromString(joinedDate)!),
-            profileImageUrlHttps: profileImageUrlHttps
+            profileImageUrlHttps: profileImageUrlHttps,
+            protected: protected
         )
     }
 }

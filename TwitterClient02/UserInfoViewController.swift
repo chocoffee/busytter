@@ -69,9 +69,12 @@ class UserInfoViewController: BaseUserViewController{
     }
     
     func setLabels(){
+        if userStatus!.protected {
+        protectedMark = "🔒"
+        }
         userId.text = "@\(userStatus!.screen_name)"
         userIntroduce.text = userStatus!.description
-        userName.text = userStatus!.user_name
+        userName.text = userStatus!.user_name + protectedMark
         followingCount.text = "following\n\(userStatus!.following)"
         followersCount.text = "followers\n\(userStatus!.followers)"
         favoriteCount.text = "favorites\n\(userStatus!.favorites)"

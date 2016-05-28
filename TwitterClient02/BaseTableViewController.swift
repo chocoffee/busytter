@@ -278,6 +278,7 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
             let status = statusArray[indexPath!]
             
             userVC.toGetUserInfoId = status.screenName
+            
             userVC._userIcon = cell.userIconImg.image!
             userVC.twitterAccount = twitterAccount
         default:

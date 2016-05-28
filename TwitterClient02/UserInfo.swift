@@ -17,4 +17,5 @@ struct UserInfo {
     var totalTweet: Int
     var joinedDate: String
     var profileImageUrlHttps: String
+    var protected: Bool
 }
