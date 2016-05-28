@@ -8,14 +8,22 @@
 
 import UIKit
 
-@UIApplicationMain
+//  navigationBarとTabBarのカラー設定
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var navigationController = UINavigationController()
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        navigationController = window!.rootViewController as! UINavigationController
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().barTintColor = UIColor.blackColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        UITabBar.appearance().tintColor = UIColor(colorLiteralRed: 177 / 255, green: 134 / 255, blue: 255 / 255, alpha: 1.0)
+        UITabBar.appearance().barTintColor = UIColor.blackColor()
+        UITabBar.appearance().backgroundColor = UIColor.redColor()
         return true
     }
 
