@@ -13,6 +13,7 @@ import Social
 class TabBarViewController: UITabBarController{
     var twitterAccount = ACAccount() 
 
+    //  TabBarController内のすべてのViewにAccount情報投げる
     override func viewDidLoad() {
         super.viewDidLoad()
         if let viewControllers = self.viewControllers {

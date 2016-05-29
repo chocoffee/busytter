@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 
+//  貫禄のノータッチ
 class WebViewController: UIViewController, WKNavigationDelegate {
 
     var openURL = NSURL()

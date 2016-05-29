@@ -13,19 +13,20 @@ import Social
 class DetailViewController: UIViewController, AccountProtocol {
     var twitterAccount = ACAccount()
     private let mainQueue = dispatch_get_main_queue()
-    var myScreenName = ""
-    var profileImage = UIImage()
-    var screenName = ""
-    var name = ""
-    var text = ""
+    
+    var myScreenName = ""   //  delete判定用のログイン中screen_name保持変数
+    var profileImage = UIImage()    //  アイコン
+    var screenName = "" //  ツイートした人のscreen_name
+    var name = ""   //  ニックネーム？
+    var text = ""   //ツイート本文
     var idStr = ""
-    var protected = false
-    var retweeted = 0
-    var favorited = 0
-    var isRetweeted = false
-    var isFavorited = false
-    var postTime = ""
-    var protectedMark = ""
+    var protected = false   //  鍵垢か否か
+    var isRetweeted = false //  MyScreenNameがrtしてるか
+    var isFavorited = false //  同上がfavしてるか
+    var retweet_count = 0   //  rtされた数
+    var favorite_count = 0  //  favされた数
+    var postTime = ""   //  投稿時間
+    var protectedMark = ""  //  🔒マーク
 
     @IBOutlet weak var postTimeLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -40,6 +41,7 @@ class DetailViewController: UIViewController, AccountProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         myScreenName = twitterAccount.username
+        
         //  触れないときはボタンの色とenableを変更する
         deleteButton.enabled = false
         if protected {
@@ -48,7 +50,6 @@ class DetailViewController: UIViewController, AccountProtocol {
             self.protectedMark = "🔒"
         }
         if myScreenName == self.screenName {
-            print("oppai")
             retweetButton.enabled = false
             retweetButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             deleteButton.enabled = true
@@ -69,7 +70,7 @@ class DetailViewController: UIViewController, AccountProtocol {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toReplySegue" {
             let nextViewController = segue.destinationViewController as! ReplyViewController
@@ -85,7 +86,7 @@ class DetailViewController: UIViewController, AccountProtocol {
         if isRetweeted {code = 2}
         print("code\(code)")
         let request = generateRequest(code)
-        let handler = generateRequestHandler(code)
+        let handler = generateRequestHandler()
         request.account = twitterAccount
         startProcessing()
         request.performRequestWithHandler(handler)
@@ -94,9 +95,8 @@ class DetailViewController: UIViewController, AccountProtocol {
     @IBAction func favorite(sender: UIButton) {
         var code = 1
         if isFavorited {code = 3}
-        print("code\(code)")
         let request = generateRequest(code)
-        let handler = generateRequestHandler(code)
+        let handler = generateRequestHandler()
         request.account = twitterAccount
         startProcessing()
         request.performRequestWithHandler(handler)
@@ -104,7 +104,7 @@ class DetailViewController: UIViewController, AccountProtocol {
     
     @IBAction func deleteMyTweet(sender: UIButton) {
         let request = generateRequest(4)
-        let handler = generateRequestHandler(4)
+        let handler = generateRequestHandler()
         request.account = twitterAccount
         startProcessing()
         request.performRequestWithHandler(handler)
@@ -113,6 +113,9 @@ class DetailViewController: UIViewController, AccountProtocol {
     //  引数によってどのapiを投げるか決定する
     private func generateRequest(which: Int) -> SLRequest {
         var url = NSURL()
+        print(which)
+        print("isRetweeted:::\(self.isRetweeted)")
+        print("isFavorited:::\(self.isFavorited)")
         switch which {
         case 0: //  create retweet
             url = NSURL(string: "https://api.twitter.com/1.1/statuses/retweet/\(idStr).json")!
@@ -135,7 +138,7 @@ class DetailViewController: UIViewController, AccountProtocol {
         return request
     }
     
-    private func generateRequestHandler(which: Int) -> SLRequestHandler {
+    private func generateRequestHandler() -> SLRequestHandler {
         let handler: SLRequestHandler = { postResponseData, urlResponse, error in
             if let requestError = error {
                 print("Request Error: An error occurred while requesting: \(requestError)")
@@ -175,8 +178,8 @@ class DetailViewController: UIViewController, AccountProtocol {
     }
     
     func setLabels() {
-        retweetedCountLabel.text = "\(retweeted)"
-        favoritedCountLabel.text = "\(favorited)"
+        retweetedCountLabel.text = "\(self.retweet_count)"
+        favoritedCountLabel.text = "\(self.favorite_count)"
     }
     
     @IBAction func goToReply(sender: UIButton) {

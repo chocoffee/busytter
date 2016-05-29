@@ -39,6 +39,7 @@
 		ACD801881CD7145700A2762C /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD801871CD7145700A2762C /* Status.swift */; };
 		ACD8018C1CD72E8600A2762C /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8018B1CD72E8600A2762C /* TimeLineCell.swift */; };
 		ACDC17921CC9B11700F1252D /* TweetSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC17911CC9B11700F1252D /* TweetSheetViewController.swift */; };
+		ACFDA8ED1CF9ED3400BB08D4 /* DetailStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFDA8EC1CF9ED3400BB08D4 /* DetailStatus.swift */; };
 		ACFF4CEA1CCDE60C00937B05 /* TimeLineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFF4CE91CCDE60C00937B05 /* TimeLineTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,7 @@
 		ACD801871CD7145700A2762C /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		ACD8018B1CD72E8600A2762C /* TimeLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
 		ACDC17911CC9B11700F1252D /* TweetSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetSheetViewController.swift; sourceTree = "<group>"; };
+		ACFDA8EC1CF9ED3400BB08D4 /* DetailStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailStatus.swift; sourceTree = "<group>"; };
 		ACFF4CE91CCDE60C00937B05 /* TimeLineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 				AC11523E1CF6F9DA0062B8A2 /* ReplyViewController.swift */,
 				ACA300361CF84B9700C4D336 /* UserTweetTableViewController.swift */,
 				ACA300381CF8857000C4D336 /* BaseUserViewController.swift */,
+				ACFDA8EC1CF9ED3400BB08D4 /* DetailStatus.swift */,
 			);
 			path = TwitterClient02;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				ACA300371CF84B9700C4D336 /* UserTweetTableViewController.swift in Sources */,
 				AC8516D61CE5647900401878 /* MyUIApplication.swift in Sources */,
 				AC02C8BA1CE04FC3005B82F3 /* DetailViewController.swift in Sources */,
+				ACFDA8ED1CF9ED3400BB08D4 /* DetailStatus.swift in Sources */,
 				AC8516D41CE55C8B00401878 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

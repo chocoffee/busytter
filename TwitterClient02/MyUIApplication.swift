@@ -8,6 +8,7 @@
 
 import UIKit
 
+//  貫禄のノータッチ（リターンズ）
 class MyUIApplication: UIApplication {
     
     var myOpenURL = NSURL()

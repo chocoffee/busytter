@@ -10,6 +10,7 @@ import UIKit
 import Social
 import Accounts
 
+//  setLabels()の内容が違うからHandlerをこっちに持ってきた関係でちょっと長い
 class UserDetailViewController: BaseUserViewController {
     @IBOutlet weak var userIcon: UIImageView!
     @IBOutlet weak var userName: UILabel!

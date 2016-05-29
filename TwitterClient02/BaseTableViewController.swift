@@ -150,6 +150,9 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
             guard let favorited = result["favorited"] as? Bool else {
                 fatalError("Parse Error!")
             }
+            guard let id = result["id"] as? Int else {
+                fatalError("Parse Error!")
+            }
             return Status(
                 text: text,
                 screenName: screenName,
@@ -247,12 +250,12 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == statusArray.count - 1 {
+        if indexPath.row == statusArray.count - 1 && indexPath.row > 10{
             max_id = self.statusArray[indexPath.row].idStr
             requestTimeLine(max_id)
        }
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.destinationViewController {
         case let detailVC as DetailViewController:
@@ -260,14 +263,15 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
             let status = statusArray[indexPath!.row]
             detailVC.text = status.text
             detailVC.screenName = status.screenName
-            print(status.screenName)
             detailVC.idStr = status.idStr
             detailVC.twitterAccount = twitterAccount
-            detailVC.retweeted = status.retweetedCount
-            detailVC.favorited = status.favoritedCount
             detailVC.name = status.userName
             detailVC.postTime = status.postTime
             detailVC.protected = status.protected
+            detailVC.isRetweeted = status.retweeted
+            detailVC.isFavorited = status.favorited
+            detailVC.retweet_count = status.retweetedCount
+            detailVC.favorite_count = status.favoritedCount
             
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! TimeLineCell
             detailVC.profileImage = cell.userIconImg.image!
@@ -278,7 +282,6 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
             let status = statusArray[indexPath!]
             
             userVC.toGetUserInfoId = status.screenName
-            
             userVC._userIcon = cell.userIconImg.image!
             userVC.twitterAccount = twitterAccount
         default:
