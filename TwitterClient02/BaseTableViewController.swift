@@ -10,7 +10,7 @@ import UIKit
 import Accounts
 import Social
 
-//  4つのTableViewControllerの親クラス
+//  4つのTableViewControllerの親クラス 
 //  同じコードは全部まとめてみた
 
 class BaseTableViewController: UITableViewController, TimeLineProtocol {
@@ -178,7 +178,11 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statusArray.count
+        if statusArray.count == 0 {
+            return 20
+        }else {
+            return statusArray.count
+        }
     }
     
     func startProcessing() {
@@ -250,7 +254,7 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == statusArray.count - 1 && indexPath.row > 10{
+        if indexPath.row == statusArray.count - 1 && indexPath.row > 8{
             max_id = self.statusArray[indexPath.row].idStr
             requestTimeLine(max_id)
        }

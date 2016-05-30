@@ -84,7 +84,6 @@ class DetailViewController: UIViewController, AccountProtocol {
     @IBAction func retweet() {
         var code = 0
         if isRetweeted {code = 2}
-        print("code\(code)")
         let request = generateRequest(code)
         let handler = generateRequestHandler()
         request.account = twitterAccount
@@ -113,9 +112,6 @@ class DetailViewController: UIViewController, AccountProtocol {
     //  引数によってどのapiを投げるか決定する
     private func generateRequest(which: Int) -> SLRequest {
         var url = NSURL()
-        print(which)
-        print("isRetweeted:::\(self.isRetweeted)")
-        print("isFavorited:::\(self.isFavorited)")
         switch which {
         case 0: //  create retweet
             url = NSURL(string: "https://api.twitter.com/1.1/statuses/retweet/\(idStr).json")!

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ak5-hu-UYx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ak5-hu-UYx">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -127,7 +127,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="83K-Aw-Zcg"/>
                                 </constraints>
-                                <state key="normal" title="favorites">
+                                <state key="normal" title="favorite">
                                     <color key="titleColor" red="0.69411764710000001" green="0.52549019610000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -368,7 +368,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zr-7i-lya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3208" y="958"/>
+            <point key="canvasLocation" x="3159" y="1036"/>
         </scene>
         <!--User Tweet Table View Controller-->
         <scene sceneID="45w-rm-ytS">
@@ -932,7 +932,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eg1-NI-YsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3155" y="106"/>
+            <point key="canvasLocation" x="3137" y="153"/>
         </scene>
         <!--Post-->
         <scene sceneID="Jrs-Jf-spp">
@@ -1164,7 +1164,7 @@
         <image name="post.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1gc-zJ-BNP"/>
-        <segue reference="xvz-W5-gBP"/>
+        <segue reference="hlL-8f-VbU"/>
+        <segue reference="fQa-kp-qAL"/>
     </inferredMetricsTieBreakers>
 </document>
