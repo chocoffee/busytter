@@ -253,11 +253,11 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
         return cell
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == statusArray.count - 1 && indexPath.row > 8 {
-            max_id = self.statusArray[indexPath.row].idStr
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if(self.tableView.contentOffset.y == (self.tableView.contentSize.height - self.tableView.bounds.size.height)){
+            self.max_id = self.statusArray[statusArray.count - 1].idStr
             requestTimeLine(max_id)
-       }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
