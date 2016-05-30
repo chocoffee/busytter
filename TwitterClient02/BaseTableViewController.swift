@@ -150,9 +150,6 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
             guard let favorited = result["favorited"] as? Bool else {
                 fatalError("Parse Error!")
             }
-            guard let id = result["id"] as? Int else {
-                fatalError("Parse Error!")
-            }
             return Status(
                 text: text,
                 screenName: screenName,
