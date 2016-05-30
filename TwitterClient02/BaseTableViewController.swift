@@ -254,7 +254,7 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == statusArray.count - 1 && indexPath.row > 8{
+        if indexPath.row == statusArray.count - 1 && indexPath.row > 8 {
             max_id = self.statusArray[indexPath.row].idStr
             requestTimeLine(max_id)
        }
@@ -282,8 +282,10 @@ class BaseTableViewController: UITableViewController, TimeLineProtocol {
             
         case let userVC as UserInfoViewController:
             let cell = sender!.superview?!.superview as! TimeLineCell
-            let indexPath = tableView.indexPathForCell(cell)?.row
-            let status = statusArray[indexPath!]
+            guard let indexPath = tableView.indexPathForCell(cell)?.row else {
+                fatalError("index not found!")
+            }
+            let status = statusArray[indexPath]
             
             userVC.toGetUserInfoId = status.screenName
             userVC._userIcon = cell.userIconImg.image!
